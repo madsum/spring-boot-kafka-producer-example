@@ -1,1 +1,26 @@
-# spring-boot-kafka-producer-example
+# Spring Boot with Kafka Producer Example
+
+Step 1: Download the code
+Download the 2.4.1 release and un-tar it.
+Download kafka from:
+https://www.apache.org/dyn/closer.cgi?path=/kafka/2.4.1/kafka_2.12-2.4.1.tgz
+
+1 > tar -xzf kafka_2.12-2.4.1.tgz  
+2 > cd kafka_2.12-2.4.1
+
+This Project covers how to use Spring Boot with Spring Kafka to Publish JSON/String message to a Kafka topic
+## Start Zookeeper
+- `bin/zookeeper-server-start.sh config/zookeeper.properties`
+
+## Start Kafka Server
+- `bin/kafka-server-start.sh config/server.properties`
+
+## Create Kafka Topic
+- `bin/kafka-topics.sh --create --zookeeper localhost:2181 --replication-factor 1 --partitions 1 --topic Kafka_Example`
+
+## Consume from the Kafka Topic via Console
+- `bin/kafka-console-consumer.sh --bootstrap-server localhost:9092 --topic Kafka_Example --from-beginning`
+
+## Publish message via WebService
+- `http://localhost:8081/kafka/publish/Sam`
+- `http://localhost:8081/kafka/publish/Peter`
